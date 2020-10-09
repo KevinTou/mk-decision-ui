@@ -1,10 +1,20 @@
 import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
+// Components
+import Login from './Login';
+import EmailForm from './EmailForm';
 
 function App() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        {/* Form should be a protected route! */}
+        <Route path="/form" component={EmailForm} />
+        <Redirect to="/" />
+      </Switch>
+    </>
   );
 }
 
