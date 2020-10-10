@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
-import { makeStyles, Paper } from '@material-ui/core';
+import EmailOutlined from '@material-ui/icons/EmailOutlined';
+import { makeStyles, Paper, Avatar, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+  },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -21,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EmailForm = () => {
-  const { form, paper, button } = useStyles();
+const ContactUs = () => {
+  const { form, paper, button, avatar } = useStyles();
 
   const [data, setData] = useState({ name: '', email: '', message: '' });
 
@@ -38,7 +43,13 @@ const EmailForm = () => {
 
   return (
     <Paper className={paper}>
-      <form className={form} onSubmit={handleSubmit}>
+      <Avatar className={avatar}>
+        <EmailOutlined />
+      </Avatar>
+      <Typography component="h1" variant="h5">
+        Contact Us
+      </Typography>
+      <form className={form} onSubmit={handleSubmit} autoComplete="off">
         <TextField
           label="Name"
           variant="outlined"
@@ -52,6 +63,7 @@ const EmailForm = () => {
         <TextField
           label="Email"
           variant="outlined"
+          type="email"
           margin="normal"
           placeholder="E.g. example123@mail.com"
           name="email"
@@ -86,4 +98,4 @@ const EmailForm = () => {
   );
 };
 
-export default EmailForm;
+export default ContactUs;
