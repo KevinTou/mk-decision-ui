@@ -4,7 +4,7 @@ import { Container } from '@material-ui/core';
 
 // Components
 import Login from './Login';
-import EmailForm from './EmailForm';
+import ContactUs from './ContactUs';
 import CenteredFullScreenWrapper from '../utils/CenteredFullScreenWrapper';
 
 function App() {
@@ -13,9 +13,9 @@ function App() {
       <Container component="main" maxWidth="xs">
         <Switch>
           <Route exact path="/" component={Login} />
-          {/* Form should be a protected route! */}
-          <Route path="/form" component={EmailForm} />
-          <Redirect to="/form" />
+          {/* Contact should be a protected route! */}
+          <Route path="/contact" component={ContactUs} />
+          <Redirect to="/contact" />
         </Switch>
       </Container>
     </CenteredFullScreenWrapper>
