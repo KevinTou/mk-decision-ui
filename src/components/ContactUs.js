@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import EmailOutlined from '@material-ui/icons/EmailOutlined';
 import { makeStyles, Paper, Avatar, Typography } from '@material-ui/core';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -35,10 +36,21 @@ const ContactUs = () => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log('submitted data: ', data);
+    try {
+      const URL =
+        'https://0fdbjzkovl.execute-api.us-west-2.amazonaws.com/development/';
+
+      await axios.post(URL, data);
+
+      setData({ name: '', email: '', message: '' });
+
+      alert('Thank you for your message!');
+    } catch (err) {
+      console.log('error: ', err);
+    }
   };
 
   return (
